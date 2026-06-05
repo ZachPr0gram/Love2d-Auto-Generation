@@ -1,18 +1,16 @@
 --River Generation--
 
 function to_middle(THE_MAP, river_points,x,y, iter)
-	local start = river_points[iter][1]
-	local end = river_points[iter][3]
+	local start_point = river_points[iter][1]
+	local end_point = river_points[iter][3]
 	--Function implementation--
 	local randomness = function() return not(math.random(1,12)>4) end
+	local is_left = function(val,diff_value) return val==math.abs(diff_value) end
 	--End--
-	local diff_x = start[1] - end[1]
-	local diff_y = start[2] - end[2]
+	local diff_x = start_point[1] - end_point[1]
+	local diff_y = start_point[2] - end_point[2]
 
-	if(diff_x == math.abs(diff_x_))then
-		--Head to left--
 
-	end
 	THE_MAP[y][x]=3
 	return to_middle(THE_MAP, river_points,x,y)
 
