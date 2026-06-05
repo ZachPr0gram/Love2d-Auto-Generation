@@ -50,8 +50,8 @@ function love.load()
 	map_init(THE_MAP, height+1)
 	recur_gen(1,1,length,height+1, THE_MAP) --lua is NOT zero indexed--
 	--End--
-	river_generation(THE_MAP, length, height)
-	
+	--river_generation(THE_MAP, length, height)
+	new_river_gen(THE_MAP, length, height)
 
 
 	--Canvas Things--
