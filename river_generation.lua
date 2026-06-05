@@ -1,6 +1,32 @@
 --River Generation--
 
-function generate_path()
+function to_middle(THE_MAP, river_points,x,y, iter)
+	local start = river_points[iter][1]
+	local end = river_points[iter][3]
+	--Function implementation--
+	local randomness = function() return not(math.random(1,12)>4) end
+	--End--
+	local diff_x = start[1] - end[1]
+	local diff_y = start[2] - end[2]
+
+	if(diff_x == math.abs(diff_x_))then
+		--Head to left--
+
+	end
+	THE_MAP[y][x]=3
+	return to_middle(THE_MAP, river_points,x,y)
+
+end
+
+function to_end(THE_MAP, river_points)
+
+end
+
+
+
+function generate_path(THE_MAP, river_points)
+	current_mode = "start"
+	current_x = nil
 
 end
 

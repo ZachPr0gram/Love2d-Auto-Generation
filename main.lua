@@ -12,6 +12,8 @@ local tilesize = 32
 
 function window_setup()
 	love.window.setFullscreen(true, "desktop")
+	--Nearest Neighbor--
+	love.graphics.setDefaultFilter("nearest", "nearest")
 end
 
 function print_map(length, height, THE_MAP)
