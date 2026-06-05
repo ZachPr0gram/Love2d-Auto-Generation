@@ -3,7 +3,7 @@ local hotspots = 3 --Algo later--
 
 function index_x(HOTSPOT_MAP, 
 
-function find_hotspot_prox(HOTSPOT_MAP, current_x, current_y) --Essential--
+function find_hotspot_prox(HOTSPOT_MAP, current_x, current_y) --Essential-- --Will return distance--
 	--1. Find nearest
 	--2. Calculate Distance
 	--	2a. Back and Front "Feelers"
@@ -26,7 +26,9 @@ function create_hotspots(THE_MAP, length, height)
 		HOTSPOT_MAP[i] = {}
 	end
 
+	if(math.random()==x)then
 
+	end
 
 	
 	

@@ -4,7 +4,7 @@ require("rendering")
 require("camera")
 require("mouse")
 require("river_generation")
-
+local aliens = require("aliens.alien_main")
 
 local length = 100
 local height = 100
