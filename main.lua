@@ -55,7 +55,6 @@ function love.load()
 	--river_generation(THE_MAP, length, height)
 	new_river_gen(THE_MAP, length, height)
 
-
 	--Canvas Things--
 	map_canvas = load_map_canvas(length, height, tilesize)
 	map_rendering(THE_MAP, map_canvas, length, height)
