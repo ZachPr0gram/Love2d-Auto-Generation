@@ -3,8 +3,10 @@ require("recursive_generate")
 require("rendering")
 require("camera")
 require("river_generation")
-local aliens = require("aliens.alien_main")
 local shaders = require("shader.shader")
+
+
+
 local length = 100
 local height = 100
 local tilesize = 32
@@ -59,9 +61,6 @@ function love.load()
 	map_rendering(THE_MAP, map_canvas, length, height)
 	--End--
 
-	--Cool Alien Things--
-	aliens.alien:load(20, length, height)
-	--End--
 
 end
 
@@ -83,9 +82,7 @@ function love.update()
 		end
 	end
 
-	--Cool Alien Things--
-	aliens.alien:update()
-	--End--
+	
 end
 
 
@@ -100,7 +97,6 @@ function love.draw()
 	
 	love.graphics.push()
 	love.graphics.translate(camera.x, camera.y)
-	aliens.alien:draw()
 	love.graphics.pop()
 	--End--
 	
