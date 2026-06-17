@@ -11,7 +11,16 @@ local length = 100
 local height = 100
 local tilesize = 32
 mouse = {}
-mouse.zoom = 0
+mouse.zoom = 1
+
+function mouse:zoom_debug()
+	--Purely for testing purposes--
+	local width
+	local height
+	width, height = love.graphics.getDimensions()
+	love.graphics.print(self.zoom, 20, height-10)
+
+end
 
 function window_setup()
 	love.window.setFullscreen(true, "desktop")
@@ -87,6 +96,7 @@ end
 
 
 function love.draw()
+	mouse:zoom_debug()
 	--Shader--
 	love.graphics.setShader(shaders.default)
 	--End--
@@ -100,13 +110,4 @@ function love.draw()
 	love.graphics.pop()
 	--End--
 	
-	
-	
-	--Cool Alien Things--
-
-	--End--
-
-	--Boiler--
-	--love.graphics.pop()
-	--End--
 end
