@@ -5,9 +5,11 @@ require("camera")
 require("river_generation")
 local aliens = require("aliens.alien_main")
 local shaders = require("shader.shader")
-local length = 500
-local height = 500
+local length = 100
+local height = 100
 local tilesize = 32
+mouse = {}
+mouse.zoom = 0
 
 function window_setup()
 	love.window.setFullscreen(true, "desktop")
@@ -43,9 +45,7 @@ function love.load()
 	window_setup()
 	--End--
 	
-	--Cursor setup--
-	mouse_init()
-	--End--
+
 	--Map Generation--
 	THE_MAP = {}
 	map_init(THE_MAP, height+1)
@@ -71,7 +71,6 @@ function love.update()
 	end
 	camera_work()
 
-	mouse_update()
 	--Checking mouse scale--
 	function love.wheelmoved(x,y)
 		local mouse_constant = 0.5
@@ -94,7 +93,7 @@ function love.draw()
 	--Shader--
 	love.graphics.setShader(shaders.default)
 	--End--
-	mouse_scale_draw()
+	love.graphics.scale(mouse.zoom, mouse.zoom)
 	--Drawing Map Canvas--
 	love.graphics.draw(map_canvas, camera.x, camera.y)
 	--End--
@@ -103,7 +102,6 @@ function love.draw()
 	love.graphics.translate(camera.x, camera.y)
 	aliens.alien:draw()
 	love.graphics.pop()
-	mouse_draw()
 	--End--
 	
 	
