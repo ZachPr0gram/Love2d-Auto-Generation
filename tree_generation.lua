@@ -1,9 +1,8 @@
 --Tree Generation--
 local hotspots = 3 --Algo later--
 
-function index_x(HOTSPOT_MAP, 
 
-function find_hotspot_prox(HOTSPOT_MAP, current_x, current_y) --Essential-- --Will return distance--
+function find_hotspot_prox(HOTSPOT_MAP, current_x, current_y) --Essential-- --Will return distance (int)--
 	--1. Find nearest
 	--2. Calculate Distance
 	--	2a. Back and Front "Feelers"
@@ -19,16 +18,33 @@ function find_hotspot_prox(HOTSPOT_MAP, current_x, current_y) --Essential-- --Wi
 	return nil
 end
 
-function create_hotspots(THE_MAP, length, height)
+function create_hotspots(length, height)
 	local hotspot_radius_constant = 10
+	
 	HOTSPOT_MAP = {}
 	for i=1, height do
 		HOTSPOT_MAP[i] = {}
 	end
 
-	if(math.random()==x)then
+	--Filling with zeroes--
 
+
+	for i=1, heigth do
+		for j=1, length do
+			if(math.random(5)==2)then
+				--Check nearby prox, place--
+				if(find_hotspot_prox<=hotspot_radius_constant)then
+					HOTSPOT_MAP[i][j] = 1 --Hotspot--
+				else
+					HOTSPOT_MAP[i][j] = 0 --Base--
+				end
+				
+			else
+				HOTSPOT_MAP[i][j] = 0 --Base--
+			end
+		end
 	end
+
 
 	
 	
