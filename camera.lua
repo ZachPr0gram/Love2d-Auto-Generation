@@ -8,7 +8,7 @@ camera.y=0
 function camera_work()
 	--Might eventually import a library for this!--
 	if(love.keyboard.isDown("lshift"))then
-		constant=12
+		constant=35
 	else
 		constant=8
 	end
