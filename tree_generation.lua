@@ -56,18 +56,26 @@ function Trees:create_hotspots(length, height)
 end
 
 
-function Trees:is_tree(current_x, current_y) --Probablity calculations--
+function Trees:is_tree(HOTSPOT_MAP, current_x, current_y, length) --Probablity calculations--
 	--Returns Float--
+	if(math.random(6)==2)then
+		return 0.9
+	else
+
+		return(find_hotspot_prox(HOTSPOT_MAP, current_x, current_y, length))
+	end
+	
 	
 end
 
 
 function Trees:rendering_trees(THE_MAP, HOTSPOT_MAP, length, height)
+	self:create_hotspots(length, height)
 	for i=1, height do
 		for z=1, length do
-			if(is_tree(z,i)>=0.6 and THE_MAP[i][z]!=3)then
+			if(self:is_tree(HOTSPOT_MAP, z,i, length)>=0.6 and THE_MAP[i][z]!=3)then
 				--Generate a tree--
-
+				THE_MAP[i][z] = 4
 			end
 		end
 	end
