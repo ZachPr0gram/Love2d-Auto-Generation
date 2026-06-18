@@ -6,6 +6,7 @@ local Grass = love.graphics.newImage("/assets/Grass.png")
 local Tree = love.graphics.newImage("/assets/Tree.png")
 local Water = love.graphics.newImage("/assets/Water.png")
 
+
 function map_rendering(THE_MAP, map_canvas, length, height)
 	love.graphics.setCanvas(map_canvas)
 	love.graphics.clear()
@@ -18,6 +19,8 @@ function map_rendering(THE_MAP, map_canvas, length, height)
 				love.graphics.draw(Dirt, z*constant, i*constant)
 			elseif(THE_MAP[i][z]==3)then
 				love.graphics.draw(Water, z*constant, i*constant)
+			elseif(THE_MAP[i][z]==4)then
+				love.graphics.draw(Tree, z*constant, i*constant)
 			end
 		end
 	end
