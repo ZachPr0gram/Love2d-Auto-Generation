@@ -3,6 +3,7 @@ local hotspots = 3 --Algo later--
 
 Trees = {}
 
+
 function Trees:find_hotspot_prox(HOTSPOT_MAP, current_x, current_y, width) --Essential-- --Will return distance (int)--
 	local count = 0
 	for i=current_y, 1 do
@@ -14,9 +15,10 @@ function Trees:find_hotspot_prox(HOTSPOT_MAP, current_x, current_y, width) --Ess
 			end
 		end
 	end
+	return count
 end
 
-function Trees:create_hotspots(length, height)
+function Trees:create_hotspots(THE_MAP, length, height)
 	local hotspot_radius_constant = 10
 
 
@@ -32,12 +34,13 @@ function Trees:create_hotspots(length, height)
 
 
 
-	for i=1, heigth do
+	for i=1, height do
 		for j=1, length do
 			if(math.random(5)==2)then
 				--Check nearby prox, place--
-				if(find_hotspot_prox(HOTSPOT_MAP, j, i, length)<=hotspot_radius_constant)then
+				if(self:find_hotspot_prox(HOTSPOT_MAP, j, i, length)<=hotspot_radius_constant)then
 					HOTSPOT_MAP[i][j] = 1 --Hotspot--
+					THE_MAP[i][j] = 5 --Visualizing--
 				else
 					HOTSPOT_MAP[i][j] = 0 --Base--
 				end
@@ -49,7 +52,7 @@ function Trees:create_hotspots(length, height)
 	end
 
 
-	
+	return HOTSPOT_MAP
 	
 
 
@@ -58,22 +61,24 @@ end
 
 function Trees:is_tree(HOTSPOT_MAP, current_x, current_y, length) --Probablity calculations--
 	--Returns Float--
-	if(math.random(6)==2)then
+	if(math.random(6)==2)then --Random assured chance for tree--
 		return 0.9
 	else
 
-		return(find_hotspot_prox(HOTSPOT_MAP, current_x, current_y, length))
+		return(self:find_hotspot_prox(HOTSPOT_MAP, current_x, current_y, length))
 	end
 	
 	
 end
 
 
-function Trees:rendering_trees(THE_MAP, HOTSPOT_MAP, length, height)
-	self:create_hotspots(length, height)
+function Trees:rendering_trees(THE_MAP, length, height) --Called Function--
+	local HOTSPOT_MAP = self:create_hotspots(THE_MAP, length, height)
+
+
 	for i=1, height do
 		for z=1, length do
-			if(self:is_tree(HOTSPOT_MAP, z,i, length)>=0.6 and THE_MAP[i][z]!=3)then
+			if(self:is_tree(HOTSPOT_MAP, z,i, length)>=0.6 and THE_MAP[i][z]~=3)then
 				--Generate a tree--
 				THE_MAP[i][z] = 4
 			end

@@ -3,6 +3,7 @@ require("recursive_generate")
 require("rendering")
 require("camera")
 require("river_generation")
+Trees = require("tree_generation")
 local shaders = require("shader.shader")
 
 
@@ -64,6 +65,7 @@ function love.load()
 	--End--
 	--river_generation(THE_MAP, length, height)
 	new_river_gen(THE_MAP, length, height)
+	Trees:rendering_trees(THE_MAP, length, height)
 
 	--Canvas Things--
 	map_canvas = load_map_canvas(length, height, tilesize)
