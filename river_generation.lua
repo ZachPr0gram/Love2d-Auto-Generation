@@ -5,6 +5,8 @@ function to_middle(THE_MAP, river_points,x,y, iter)
 	local end_point = river_points[iter][3]
 	--Function implementation--
 	local randomness = function() return not(math.random(1,12)>4) end
+	
+
 	local is_left = function(val,diff_value) return val==math.abs(diff_value) end
 	--End--
 	local diff_x = start_point[1] - end_point[1]
@@ -12,7 +14,7 @@ function to_middle(THE_MAP, river_points,x,y, iter)
 
 
 	THE_MAP[y][x]=3
-	return to_middle(THE_MAP, river_points,x,y)
+	return to_middle(THE_MAP, river_points,x,y, iter)
 
 end
 
